@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import HighScore from './HighScore';
 
 class Aplicacion extends Component{
     constructor(props){
@@ -40,17 +41,39 @@ class Aplicacion extends Component{
             this.setState({premio: true});
         }
     }
+    /*Creation of a function for reset count to 0 
+    */
+    resetCount = (e) =>{
+        console.log("Evento Reset:  ", e);
+        this.setState({
+            count: 0,
+            premio: false
+        });
+        
+    }
 
     render(){
         let {count}=this.state; 
-
+        /* class Highscore can be coded as <Highscore/> due 
+        it doesnt have child elements inside it
+        Also can use as <HighScore> argument </HighScore>
+        */ 
         return( 
+            // javascript within a return method must be wrapped in curly braces { }
+            
             <div>
-                <h1>Has clickeado el boton: {count} veces</h1>   
-                    {(this.state.premio) ?
-                    <h1>Has clickeado 10 veces Has ganado un premio!</h1>
-                    : null
-                    }
+                <h1>Has clickeado el boton: {count} veces</h1>                       
+                    <HighScore
+                        /* creation of a property named premio
+                        each time a variable property must pass in as a property
+                        it is wrapped in curly braces {}
+                        */
+                        premio={this.state.premio} 
+                        
+                        /* alternative syntax for argument function onReset:
+                        onReset={(e)=> this.resetCount(e)} */
+                       onReset={this.resetCount} // no function parameter specified
+                    />
                 <span> 
                     <button onClick={(e) => {this.handleClick()}}>Clickéame</button>
                 </span>

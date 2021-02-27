@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HighScore from './HighScore';
+import './css/styles.css';
 
 class Aplicacion extends Component{
     constructor(props){
@@ -61,22 +62,29 @@ class Aplicacion extends Component{
         return( 
             // javascript within a return method must be wrapped in curly braces { }
             
-            <div>
-                <h1>Has clickeado el boton: {count} veces</h1>                       
+            <div class="container-box">
+                <div class="container-header">
+                    <h2 class="title">Contador de Clicks</h2>
+                </div>
+                <div>
+                    <h4 class="title">Has clickeado el boton: &nbsp;
+                {count} veces</h4>                       
+                </div>
+                <div class="container-body">
                     <HighScore
                         /* creation of a property named premio
                         each time a variable property must pass in as a property
                         it is wrapped in curly braces {}
                         */
                         premio={this.state.premio} 
-                        
                         /* alternative syntax for argument function onReset:
                         onReset={(e)=> this.resetCount(e)} */
-                       onReset={this.resetCount} // no function parameter specified
-                    />
-                <span> 
-                    <button onClick={(e) => {this.handleClick()}}>Clickéame</button>
-                </span>
+                        onReset={this.resetCount} // no function parameter specified
+                        />
+                </div>
+                <div class="container-btn">
+                    <button class="btn btn-click" onClick={(e) => {this.handleClick()}}>Clickéame</button>                            
+                </div>
             </div>
        );
     }

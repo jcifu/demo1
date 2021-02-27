@@ -7,11 +7,11 @@ class HighScore extends Component{
             return(
                 // alternative syntax for onClick function :
                 // onClick= {(e) => this.props.onReset(e)}
-                <div>
-                    <h1>Has clickeado 10 veces.
+                <div id="premio">
+                    <h1 class="center">Has clickeado 10 veces.
                     <br/>
                     Has ganado un premio!</h1>
-                    <button onClick= {this.props.onReset}>Reset</button>  
+                    <button class="btn btn-reset" onClick= {this.props.onReset}>Reset</button>  
                 </div>
             )
         }else{
